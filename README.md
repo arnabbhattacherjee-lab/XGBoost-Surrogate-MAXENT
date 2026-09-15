@@ -128,8 +128,7 @@ Once training is complete, the saved XGBoost models can be used to predict a
 	      Simulated Hi-C
 	             │
 	             ▼
-	   Comparison with
-	 experimental Hi-C
+	   Comparison with experimental Hi-C
 
 The trained model does not require a cell-type label during prediction; the features are derived directly from the input contact matrix.
 
