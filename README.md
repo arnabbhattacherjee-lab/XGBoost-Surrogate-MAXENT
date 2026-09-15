@@ -96,3 +96,40 @@ where:
 	xgb_v10_clf.json — classifier used to determine whether a λij interaction is non-zero.
 	xgb_v10_reg.json — regressor used to predict the magnitude of λij.
 	xgb_v10_meta.json — metadata describing the trained model and training configuration.
+
+## From Training to Prediction
+
+Once training is complete, the saved XGBoost models can be used to predict a
+λ-map directly from a new Hi-C/Micro-C contact map:
+
+	Experimental Hi-C / Micro-C
+	             │
+	             ▼
+	      Feature extraction
+	             │
+	             ▼
+	     XGBoost hurdle model
+	        ┌────┴────┐
+	        ▼         ▼
+	   Classifier   Regressor
+	        └────┬────┘
+	             ▼
+	       Predicted λ-map
+	             │
+	             ▼
+	     Forward polymer
+	        simulation
+	             │
+	             ▼
+	    Ensemble of 3D
+	      structures
+	             │
+	             ▼
+	      Simulated Hi-C
+	             │
+	             ▼
+	   Comparison with
+	 experimental Hi-C
+
+The trained model does not require a cell-type label during prediction; the
+features are derived directly from the input contact matrix.
