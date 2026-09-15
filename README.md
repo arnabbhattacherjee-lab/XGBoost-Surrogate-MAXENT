@@ -12,3 +12,87 @@ The overall workflow consists of two major stages. We have experimentally measur
 <p align="center">
   <img src="Figures/Framework.png" width="1000">
 </p>
+
+
+## Input Data:
+Each training locus should contain:
+
+	locus_folder/
+	├── contact_map
+	└── lamda.txt
+
+The λ-map should be provided in 3-column sparse format:
+
+row    column    lambda_value
+
+For example:
+
+0    0    -12.34
+
+0    1     5.67
+
+0    2    -8.91
+
+...
+
+The training script expects the λ-map to be named: lamda.txt and located inside the corresponding locus directory.
+
+## Repository Structure
+	project/
+	│
+	├── data/
+	│   ├── locus_01/
+	│   │   ├── contact_map
+	│   │   └── lamda.txt
+	│   │
+	│   ├── locus_02/
+	│   │   ├── contact_map
+	│   │   └── lamda.txt
+	│   │
+	│   └── ...
+	│
+	├── xgboost_hurdle_v10_cpu.py
+
+## Training the Model
+
+After preparing the 12 loci and activating the required Python environment,
+run:
+
+	python xgboost_hurdle_v10_cpu.py
+
+The default execution performs:
+
+1. Loading the Hi-C contact maps and corresponding MaxEnt λ-maps.
+2. Construction of local contact-map features.
+3. Training of the two-stage XGBoost hurdle model.
+4. Leave-one-locus-out cross-validation (LOOCV) across all 12 loci.
+5. Evaluation of λ-map predictions using R², Pearson correlation, Spearman correlation, and MAE.
+6. Training of the final production model using all 12 loci.
+
+## Output Files
+
+The training procedure generates the following main files:
+
+	xgb_v10_loocv_results.csv
+	xgb_v10_fold00_<name>.png
+	xgb_v10_fold00_<name>_pred.npy
+	xgb_v10_fold00_<name>_metrics.json
+	...
+	xgb_v10_fold11_<name>.png
+	xgb_v10_fold11_<name>_pred.npy
+	xgb_v10_fold11_<name>_metrics.json
+
+	xgb_v10_clf.json
+	xgb_v10_reg.json
+	xgb_v10_meta.json
+
+The two final model files are:
+
+	xgb_v10_clf.json
+	xgb_v10_reg.json
+
+where:
+
+	xgb_v10_clf.json — classifier used to determine whether a λij interaction is non-zero.
+	xgb_v10_reg.json — regressor used to predict the magnitude of λij.
+	xgb_v10_meta.json — metadata describing the trained model and training configuration.
