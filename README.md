@@ -131,5 +131,21 @@ Once training is complete, the saved XGBoost models can be used to predict a
 	   Comparison with
 	 experimental Hi-C
 
-The trained model does not require a cell-type label during prediction; the
-features are derived directly from the input contact matrix.
+The trained model does not require a cell-type label during prediction; the features are derived directly from the input contact matrix.
+
+## Relevant software:
+	Cooler
+	Cooltools
+	XGBoost
+	NumPy
+	SciPy
+	Scikit-learn
+	pyBigWig
+
+## Author
+
+Rahul Mittal, Siddhant Bhardwaj, Trisha Majumdar, and Arnab Bhattacherjee∗
+
+Email: arnab@jnu.ac.in
+
+Institution: JNU, New Delhi
