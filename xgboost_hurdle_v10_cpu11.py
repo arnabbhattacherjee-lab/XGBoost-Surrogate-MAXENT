@@ -168,19 +168,8 @@ REG_PARAMS_FULL = dict(
 # ─────────────────────────────────────────────────────────────────────────────
 
 TARGET_CONFIGS = [
-    # (display_name,    contact_subpath,                  lambda_subpath)
-    ("alphaglobin_H1", "alphaglobin_H1/row_col_norm_map", "alphaglobin_H1/lamda_0100.txt"),
-    ("cbx8_H1",        "cbx8_H1/row_col_norm_map",        "cbx8_H1/lamda_0100.txt"),
-    ("hoxa_H1",        "hoxa_H1/row_col_norm_map",        "hoxa_H1/lamda_0100.txt"),
-    ("hoxb_H1",        "hoxb_H1/row_col_norm_map",        "hoxb_H1/lamda_0100.txt"),
-    ("hoxc11_H1",      "hoxc11_H1/row_col_norm_map",      "hoxc11_H1/lamda_0100.txt"),
-    ("nanog_H1",       "nanog_H1/row_col_norm_map",        "nanog_H1/lamda_0100.txt"),
-    ("ppm1g_H1",       "ppm1g_H1/row_col_norm_map",        "ppm1g_H1/lamda_0100.txt"),
-    ("lmo2_K562",      "lmo2_K562/row_col_norm_map",       "lmo2_K562/lamda_0100.txt"),
-    ("myc_K562",       "myc_K562/row_col_norm_map",        "myc_K562/lamda_0100.txt"),
-    ("nanog_K562",     "nanog_K562/row_col_norm_map",      "nanog_K562/lamda_0100.txt"),
-    ("sox2_K562",      "sox2_K562/row_col_norm_map",       "sox2_K562/lamda_0100.txt"),
-    ("tal1_K562",      "tal1_K562/row_col_norm_map",       "tal1_K562/lamda_0100.txt"),
+    # (display_name,          contact_subpath,                  lambda_subpath)
+    ("alphaglobin_H1",      "row_col_norm_map",                  "lamda.txt"),
 ]
 N_FOLDS = len(TARGET_CONFIGS)   # 12
 
